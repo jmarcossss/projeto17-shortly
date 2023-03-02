@@ -20,7 +20,7 @@ export async function loginUsuario(require, response, funcAuxi) {
             "SELECT * FROM users WHERE email = $1", [email])
         if(response.rowCount === 0) {
             return response.sendStatus(401)
-        }
+        } 
         const { id, password: passwordInDb } = response.rows[0]
         require.sanitizedBody.userId = id
         //Comparando para ver se as senhas batem (a do banco com a criada)
