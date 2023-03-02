@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { linkUrl } from "../controllers/urlsController.js";
-import { matarUrl } from "../controllers/urlsController.js";
-import { pegarUrl } from "../controllers/urlsController.js";
-import { camUrl } from "../controllers/urlsController.js";
+import { linkUrl } from "../controllers/controllerUrls.js";
+import { matarUrl } from "../controllers/controllerUrls.js";
+import { pegarUrl } from "../controllers/controllerUrls.js";
+import { camUrl } from "../controllers/controllerUrls.js";
 
 import { tokenMiddleware } from "../middlewares/tokenMiddleware.js";
 import { tokMiddleware } from "../middlewares/tokMiddleware.js";

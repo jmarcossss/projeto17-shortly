@@ -6,14 +6,9 @@ import { db } from "../database/db.js";
 export async function cadastroUsuario(require, response, funcAuxi) {
     const { name, email, password } = require.sanitizedBody
     try {
-        await db.query(
-            "INSERT INTO users (name, email, password) VALUES ($1, $2, $3)", [name, email, bcrypt.hashSync(password, 10)])
-    }
+        await db.query("INSERT INTO users (name, email, password) VALUES ($1, $2, $3)", [name, email, bcrypt.hashSync(password, 10)])}
     //Se der ruim, exibir status 500
-    catch(err) {
-        console.log(err)
-        return response.sendStatus(500)
-    }
+    catch(err) {console.log(err); return response.sendStatus(500)}
     return response.sendStatus(201)
 }
 
@@ -35,9 +30,6 @@ export async function loginUsuario(require, response, funcAuxi) {
 
     }
     //Se der ruim, exibir status 500
-    catch (err) {
-        console.log(err)
-        return response.sendStatus(500)
-    }
+    catch(err) {console.log(err); return response.sendStatus(500)}
     funcAuxi()
 }
