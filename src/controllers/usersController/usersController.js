@@ -5,9 +5,7 @@ export async function pegPeop(require, response) {
     try {
         const response = await db.query(
             `SELECT  users.id,  users.name, COALESCE(SUM(urls.visit_count), 0) AS "visitCount",
-            CASE 
-                WHEN COUNT(urls.id) = 0 
-                    THEN  ARRAY[]::json[]
+            CASE WHEN COUNT(urls.id) = 0 THEN  ARRAY[]::json[]
                 ELSE ARRAY_AGG(json_build_object('id', urls.id, 'shortUrl', urls.short_url, 'url', urls.url, 'visitCount', urls.visit_count)) 
                 END AS "shortenedUrls"
             FROM users
