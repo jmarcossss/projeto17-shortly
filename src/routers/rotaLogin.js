@@ -4,14 +4,14 @@ import { loginUsuario} from "../controllers/controllerLogin.js";
 import tokenFunc from "../middlewares/userRoutes/tokenMiddleware.js";
 import comparaMails from "../middlewares/userRoutes/emailMiddleware.js";
 import tokenMiddleware2 from "../middlewares/userRoutes/tokenMiddleware2.js";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware.js";
+import { tokMiddleware } from "../middlewares/tokMiddleware.js";
 import { padraoSchemaCadastro } from "../schemas/padraoSchema.js";
 import { padraoSchemaLogin } from "../schemas/padraoSchema.js";
 
 export const rotaLogin = Router();
 
 //Cadastro do usuário
-rotaLogin.post("/signup", validateSchemaMiddleware(padraoSchemaCadastro), comparaMails, cadastroUsuario);
+rotaLogin.post("/signup", tokMiddleware(padraoSchemaCadastro), comparaMails, cadastroUsuario);
 
 //Login do usuário
-rotaLogin.post("/signin", validateSchemaMiddleware(padraoSchemaLogin), loginUsuario, tokenMiddleware2, tokenFunc);
+rotaLogin.post("/signin", tokMiddleware(padraoSchemaLogin), loginUsuario, tokenMiddleware2, tokenFunc);

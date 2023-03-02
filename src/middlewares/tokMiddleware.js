@@ -1,6 +1,6 @@
 import { sanitizeBody } from "./utils/sanitizeBody.js"
 
-export function validateSchemaMiddleware(schema) {
+export function tokMiddleware(schema) {
     return (require, response, funcAuxi) => {
         require.sanitizedBody = sanitizeBody({...require.body})
         const { error } = schema.validate(require.sanitizedBody, { abortEarly: false })

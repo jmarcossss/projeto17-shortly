@@ -2,7 +2,7 @@ import Joi from '@hapi/joi'
 
 const regexUrlPattern = /^https?:\/\/.*/
 
-export const shortenUrlSchema = Joi.object({ url: Joi.string().regex(regexUrlPattern).required() })
+export const padraoSchemaUrl = Joi.object({ url: Joi.string().regex(regexUrlPattern).required() })
 
 export const padraoSchemaLogin = Joi.object({ email: Joi.string().email().invalid("").required(), password: Joi.string().invalid("").required(), })
 

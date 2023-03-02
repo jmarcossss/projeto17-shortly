@@ -1,8 +1,8 @@
 import express from "express"
 import cors from "cors"
 import { rotaLogin } from "./routers/rotaLogin.js";
+import { rotaUrl } from "./routers/rotaUrl.js";
 // import { rotaUsuario } from "./routers/rotaUsuario.js";
-// import { rotaUrl } from "./routers/rotaUrl.js";
 // import { rotaRanking } from "./routers/rotaRanking.js";
 
 const server = express()
@@ -12,8 +12,8 @@ server.use(cors())
 server.use(express.json())
 
 server.use(rotaLogin)
+server.use(rotaUrl)
 // server.use(rotaUsuario)
-// server.use(rotaUrl)
 // server.use(rotaRanking)
 
 server.listen(PORT, () => {

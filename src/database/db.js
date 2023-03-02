@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-//Configuração para de um banco de dados
+//Configuração padrão para de um banco de dados
 const { Pool } = pg;
 
 const configDatabase = {
