@@ -30,6 +30,6 @@ export async function loginUsuario(require, response, funcAuxi) {
 
     }
     //Se der ruim, exibir status 500
-    catch(err) {console.log(err); return response.sendStatus(500)}
+    catch(err) {console.log(err); return response.sendStatus(401)}
     funcAuxi()
 }
