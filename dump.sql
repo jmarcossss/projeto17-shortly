@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.13 (Ubuntu 12.13-0ubuntu0.20.04.1)
--- Dumped by pg_dump version 12.13 (Ubuntu 12.13-0ubuntu0.20.04.1)
+-- Dumped from database version 12.14 (Ubuntu 12.14-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.14 (Ubuntu 12.14-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,7 +19,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: tokens; Type: TABLE; Schema: public; Owner: -
+-- Name: sessions; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.tokens (
@@ -30,7 +30,7 @@ CREATE TABLE public.tokens (
 );
 
 --
--- Name: tokens_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.tokens_id_seq
@@ -42,13 +42,13 @@ CREATE SEQUENCE public.tokens_id_seq
     CACHE 1;
 
 --
--- Name: tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.tokens_id_seq OWNED BY public.tokens.id;
 
 --
--- Name: urls; Type: TABLE; Schema: public; Owner: -
+-- Name: urls; Type: TABLE; Schema: public_url; Owner: -
 --
 
 CREATE TABLE public.urls (
@@ -61,7 +61,7 @@ CREATE TABLE public.urls (
 );
 
 --
--- Name: urls_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: urls; Type: SEQUENCE; Schema: public_url; Owner: -
 --
 
 CREATE SEQUENCE public.urls_id_seq
@@ -73,13 +73,13 @@ CREATE SEQUENCE public.urls_id_seq
     CACHE 1;
 
 --
--- Name: urls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: url; Type: SEQUENCE OWNED BY; schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.urls_id_seq OWNED BY public.urls.id;
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -
+-- Name: public.users; Type: TABLE; schema: public.users; Owner: -
 --
 
 CREATE TABLE public.users (
@@ -109,7 +109,7 @@ CREATE SEQUENCE public.users_id_seq
 ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 --
--- Name: tokens id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: sessions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.tokens ALTER COLUMN id SET DEFAULT nextval('public.tokens_id_seq'::regclass);
@@ -184,7 +184,7 @@ ALTER TABLE ONLY public.tokens
 
 
 --
--- Name: urls urls_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: urls urls; Type: CONSTRAINT; schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.urls
@@ -192,28 +192,28 @@ ALTER TABLE ONLY public.urls
 
 
 --
--- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users users; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_email_key UNIQUE (email);
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users users; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 --
--- Name: tokens tokens_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: users; Type: FK CONSTRAINT; schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.tokens
     ADD CONSTRAINT tokens_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 --
--- Name: urls urls_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: urls; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.urls
