@@ -1,5 +1,4 @@
 import { Router } from "express";
-
 import { rotaLogin } from "./rotaLogin.js";
 import { rotaUrl } from "./rotaUrl.js";
 import { rotaUsuario } from "./rotaUsuario.js";

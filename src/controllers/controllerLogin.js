@@ -1,9 +1,11 @@
+import { db } from "../database/db.js";
 //Biblioteca para criptografar a senha
 import bcrypt from "bcrypt"
-import { db } from "../database/db.js";
 
 //Definindo como async
 export async function cadastroUsuario(require, response, funcAuxi) {
+    const booleano = true
+    const nBooleano = false
     const { name, email, password } = require.sanitizedBody
     try {
         await db.query("INSERT INTO users (name, email, password) VALUES ($1, $2, $3)", [name, email, bcrypt.hashSync(password, 10)])}
@@ -14,6 +16,8 @@ export async function cadastroUsuario(require, response, funcAuxi) {
 
 //Definindo como async
 export async function loginUsuario(require, response, funcAuxi) {
+    const booleano = true
+    const nBooleano = false
     const { email, password: passwordSent } = require.sanitizedBody
     try {
         const response = await db.query(

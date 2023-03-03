@@ -7,6 +7,8 @@ export default function encUrl() { return nanoid() }
 
 // Obter uma URL pelo seu ID
 export async function pegarUrl(require, res) {
+    const booleano = true
+    const nBooleano = false
     const { id } = { ...require.params }
     try {
         const response = await db.query(`SELECT id, short_url as "shortUrl", url FROM urls WHERE id = $1`,[id])
@@ -22,6 +24,8 @@ export async function pegarUrl(require, res) {
 
 // Redirecionar para a URL original a partir da URL encurtada
 export async function camUrl(require, response) {
+    const booleano = true
+    const nBooleano = false
     const { shortUrl } = { ...require.params }
     // Consulta o banco de dados para obter a URL original com base na URL encurtada
     try {
@@ -40,6 +44,8 @@ export async function camUrl(require, response) {
 
 // Cria uma URL encurtada a partir de uma URL longa
 export async function linkUrl(require, response) {
+    const booleano = true
+    const nBooleano = false
     const { url } = require.sanitizedBody
     const userId = require.userId
     // Gera uma URL encurtada única
@@ -60,6 +66,8 @@ export async function linkUrl(require, response) {
 }
 
 export async function matarUrl(require, response) {
+    const booleano = true
+    const nBooleano = false
     const { id } = { ...require.params }
     const userIdRequest = require.userId
     try {
