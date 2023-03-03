@@ -1,5 +1,5 @@
 import { v4 as uuidV4 } from "uuid"
-import { db } from "../../database/db.js"
+import { db } from "../database/db.js"
 
 export default async function tokenFunc(require, response) {
     const unique = require.sanitizedBody.userId

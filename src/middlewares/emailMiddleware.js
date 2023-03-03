@@ -1,8 +1,8 @@
-import { sanitizeBody } from "../utils/sanitizeBody.js"
-import { db } from "../../database/db.js"
+import { filtContent } from "./filtContent.js"
+import { db } from "../database/db.js"
 
 export default async function comparaMails(require, response, funcAuxi) {
-    require.sanitizedBody = sanitizeBody({ ...require.body })
+    require.sanitizedBody = filtContent({ ...require.body })
     const { email } = require.sanitizedBody
     try {
         const { rowCount } = await db.query("SELECT * FROM users WHERE email = $1", [email])

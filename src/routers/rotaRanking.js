@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { imprTop } from "../controllers/rankingController/rankingController.js";
+import { imprTop } from "../controllers/rankingController.js";
 
 export const rotaRanking = Router()
 

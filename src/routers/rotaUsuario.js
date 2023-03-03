@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { tokenMiddleware } from "../middlewares/tokenMiddleware.js";
-import { pegPeop } from "../controllers/usersController/usersController.js";
+import { pegPeop } from "../controllers/usersController.js";
 
 export const rotaUsuario = Router();
 

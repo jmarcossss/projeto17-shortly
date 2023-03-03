@@ -84,8 +84,8 @@ ALTER SEQUENCE public.urls_id_seq OWNED BY public.urls.id;
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    name character varying(100) NOT NULL,
-    email character varying(100) NOT NULL,
+    name character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
     password character varying(255) NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL
 );
