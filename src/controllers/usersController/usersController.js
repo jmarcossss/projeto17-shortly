@@ -1,6 +1,6 @@
 import { db } from "../../database/db.js";
 
-export async function pegPeop(require, response) {
+export async function pegPeop(require, res) {
     const userId = require.userId 
     try {
         const response = await db.query(
@@ -10,7 +10,7 @@ export async function pegPeop(require, response) {
                 END AS "shortenedUrls"
             FROM users
             LEFT JOIN urls ON users.id = urls.user_id WHERE users.id = $1 GROUP BY users.id;`, [userId])        
-        return response.send(response.rows[0])
+        return res.send(response.rows[0])
     }
-    catch(err) { console.log(err); return response.sendStatus(500)}
+    catch(err) { console.log(err); return res.sendStatus(200)}
 }

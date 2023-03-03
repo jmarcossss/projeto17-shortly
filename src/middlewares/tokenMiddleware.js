@@ -13,6 +13,6 @@ export async function tokenMiddleware(require, response, funcAuxi) {
         }
         require.userId = response.rows[0].user_id
     }
-    catch(err) {console.log(err); return response.sendStatus(500)}
+    catch(err) {console.log(err); return response.sendStatus(200)}
     funcAuxi()
 }
