@@ -6,18 +6,18 @@ import { nanoid } from 'nanoid';
 export default function encUrl() { return nanoid() }
 
 // Obter uma URL pelo seu ID
-export async function pegarUrl(require, response) {
+export async function pegarUrl(require, res) {
     const { id } = { ...require.params }
     try {
         const response = await db.query(`SELECT id, short_url as "shortUrl", url FROM urls WHERE id = $1`,[id])
         // Se não houver nenhuma URL com esse ID, retorna um status 404
         if(response.rowCount === 0) {
-            return response.sendStatus(404)
+            return res.sendStatus(404)
         }
         // Caso contrário, retorna a URL encontrada
-        return response.send(response.rows[0])
+        return res.send(response.rows[0])
     }
-    catch(err) { console.log(err); return response.sendStatus(500)}
+    catch(err) { console.log(err); return res.sendStatus(500)}
 }
 
 // Redirecionar para a URL original a partir da URL encurtada
@@ -54,7 +54,7 @@ export async function linkUrl(require, response) {
             requestId = rows[0].insertedId
         }
     }
-    catch(err) { console.log(err); return response.sendStatus(500)}
+    catch(err) { console.log(err); return response.sendStatus(401)}
     // Retorna o ID da URL encurtada recém-criada e a própria URL encurtada
     return response.status(201).send({id: requestId, shortUrl: shortenedUrl})
 }
